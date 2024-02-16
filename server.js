@@ -1,11 +1,10 @@
   // server.js
   const express = require('express')
   const bodyParser = require('body-parser')
-  
+  const app = express()
+
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
-
-  const app = express()
 
   app.get('/', (req, res) => {
     res.send('Hello World')
@@ -22,6 +21,11 @@
 
   app.post('/books', (req, res) => {
     books.push(req.body)
+  })
+
+  app.put('/books/:id', (req, res) => {
+    const updateIndex = books.findIndex(book => book.id === req.params.id)
+    res.json(Object.assign(books[updateIndex], req.body))
   })
   
   app.listen(3000, () => {
