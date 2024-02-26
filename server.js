@@ -7,7 +7,7 @@
   app.use(bodyParser.urlencoded({ extended: true }))
 
   app.get('/', (req, res) => {
-    res.status(200).send('Hello World')
+    res.status(200).send('Hello Kitty')
   })
 
   //select
@@ -29,7 +29,7 @@
   //update
   app.put('/books/:id', (req, res) => {
     const updateIndex = books.findIndex(book => book.id === req.params.id)
-    res.status(200).json(Object.assign(books[updateIndex], req.body))
+    res.send('Hello Kitty').status(200).json(Object.assign(books[updateIndex], req.body))
   })
   
   //delete
